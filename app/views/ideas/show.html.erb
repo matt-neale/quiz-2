@@ -15,3 +15,17 @@
   <%= link_to "Edit", edit_idea_path(@idea) %>
   <%= link_to "Delete", idea_path(@idea), method: :delete, data: { confirm: "Are you sure?" } %>
 <% end %>
+
+<%= render 'reviews/form'%>
+<hr>
+<% @reviews.each do |review|%>
+  <%= review.body %>
+  <br>
+  <small><%= time_ago_in_words(review.created_at)%></small><br>
+  <small> Reviewed by: <%= review.user&.full_name || 'DELETED' %></small><br>
+
+  <% if can? :crud, review %>
+    <%= link_to("Delete", idea_review_path(@idea,review), method: :delete, data:{confirm: 'Are you sure?'})%>
+  <% end %>
+  <hr>
+<% end %>

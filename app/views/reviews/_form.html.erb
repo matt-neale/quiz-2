@@ -1,0 +1,12 @@
+<%= form_with(model:[@idea, @review], local:true) do |f| %>
+  <% if @review.errors.full_messages.each do |msg|%>
+  <ul>
+    <li> <%= msg %></li>
+  </ul>
+  <% end %>
+<% end %>
+<div>
+    <%= f.text_area(:body, cols: 50, rows:5, placeholder: 'Review this idea', class:'name_of_css_class')%>
+</div>
+    <%= f.submit 'Submit'%>
+<% end %>
