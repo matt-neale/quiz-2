@@ -6,6 +6,12 @@
     <%= @idea.description %>
   </p>
 </div>
+<h4>Created by: <%= @idea.user&.full_name || 'DELETED'%></h4>
+<small>Created At: <%= time_ago_in_words @idea.created_at %></small>
+<small>Last Updated: <%= time_ago_in_words @idea.updated_at %></small>
 
-<%= link_to "Edit", edit_idea_path(@idea) %>
-<%= link_to "Delete", idea_path(@idea), method: :delete, data: { confirm: "Are you sure?" } %>
+
+<% if can?(:crud, @idea) %>
+  <%= link_to "Edit", edit_idea_path(@idea) %>
+  <%= link_to "Delete", idea_path(@idea), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>

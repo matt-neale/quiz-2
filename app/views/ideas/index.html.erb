@@ -5,7 +5,7 @@
             <h4><%= idea.title %></h4>
         <% end %>
             <p><%= idea.description %> </p>
-            <small>Last Updated: <%= time_ago_in_words idea.updated_at %></small>
+            <h4>Created by: <%= idea.user&.full_name || 'DELETED'%></h4>
           <hr>
       <% end %>
     </div>

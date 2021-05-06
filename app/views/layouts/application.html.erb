@@ -17,6 +17,16 @@
         <%= link_to "Idea Factory", root_path, class: 'nav-item' %>
         |
         <%= link_to "New Idea", new_idea_path, class: 'nav-item' %>
+        |
+      <% if user_signed_in?%>
+        <div class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hello, <%= current_user.full_name %>!</div> 
+        <%= link_to 'Logout', session_path, method: :delete, data:{confirm: 'Are you sure you want to log out?'},class:"nav-link" %>
+      
+      <% else %>
+        <%= link_to 'Login', new_session_path,class:"nav-item"  %>
+        |
+        <%= link_to 'Sign Up', new_user_path,class:"nav-item"  %>  
+      <% end %>
       </span>
     </ul>
   </nav>

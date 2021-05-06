@@ -1,6 +1,6 @@
 class Idea < ApplicationRecord
 
-  
+  belongs_to :user
 
   before_save :capitalize_title
 

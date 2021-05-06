@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   root "ideas#index"
 
   resources :ideas
+
+  resource :session, only:[:new, :create, :destroy]
+  
+  resources :users, only:[:new, :create]
 end
