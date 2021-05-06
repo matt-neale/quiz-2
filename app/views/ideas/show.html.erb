@@ -1,0 +1,11 @@
+<div class='clearfix'>
+  <h1 class='float-left'>
+    <%= @idea.title %>
+  </h1>
+  <p>
+    <%= @idea.description %>
+  </p>
+</div>
+
+<%= link_to "Edit", edit_idea_path(@idea) %>
+<%= link_to "Delete", idea_path(@idea), method: :delete, data: { confirm: "Are you sure?" } %>

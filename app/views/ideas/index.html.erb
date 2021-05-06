@@ -1,0 +1,13 @@
+  <div class='col-10'>
+    <div class='list-group'>
+      <% @ideas.each do |idea| %>
+        <%= link_to idea do %>
+            <h4><%= idea.title %></h4>
+        <% end %>
+            <p><%= idea.description %> </p>
+            <small>Last Updated: <%= time_ago_in_words idea.updated_at %></small>
+          <hr>
+      <% end %>
+    </div>
+  </div>
+</div> 
