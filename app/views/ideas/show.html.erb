@@ -1,12 +1,12 @@
-<div class='clearfix'>
-  <h1 class='float-left'>
-    <%= @idea.title %>
-  </h1>
-  <p>
-    <%= @idea.description %>
-  </p>
-</div>
-<small>Liked by: <%= @idea.likes.count %> people</small>
+<div class="card text-center">
+  <div class="card-header">
+    
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @idea.title %></h5>
+    <p class="card-text"><%= @idea.description %></p>
+  <p class="card-text">
+    <small>Liked by: <%= @idea.likes.count %> people</small>
 <% if can?(:like,@idea)%>
   <small>
     <% if @like.present? %>
@@ -16,15 +16,20 @@
     <% end %>
   </small>
 <% end %>
-<h4>Created by: <%= @idea.user&.full_name || 'DELETED'%></h4>
-<small>Created: <%= time_ago_in_words @idea.created_at %> ago</small>
-<small>Last Updated: <%= time_ago_in_words @idea.updated_at %> ago</small>
+  </p>
+    
+  <div class="card-footer text-muted">
+    <h5>Created by: <%= @idea.user&.full_name || 'DELETED'%></h5>
+    <small>Created: <%= time_ago_in_words @idea.created_at %> ago</small>
+    <small>Last Updated: <%= time_ago_in_words @idea.updated_at %> ago</small>
+    <% if can?(:crud, @idea) %>
+      <%= link_to "Edit", edit_idea_path(@idea) %>
+      <%= link_to "Delete", idea_path(@idea), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+  </div>
+</div>
 
 
-<% if can?(:crud, @idea) %>
-  <%= link_to "Edit", edit_idea_path(@idea) %>
-  <%= link_to "Delete", idea_path(@idea), method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
 
 <%= render 'reviews/form'%>
 <hr>

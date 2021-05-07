@@ -5,7 +5,7 @@ class Idea < ApplicationRecord
   has_many :likes
   has_many :likers, through: :likes, source: :user
 
-  before_save :capitalize_title
+  # before_save :capitalize_title <----- this was making it so multiple of the same title could be saved?
 
   validates :title, presence: {message: "Must be given"}, uniqueness: true
   validates :description, presence: true
