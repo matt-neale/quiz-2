@@ -11,7 +11,7 @@ class LikesController < ApplicationController
     else
       flash[:danger] = like.errors.full_messages.join(', ')
     end
-    redirect_to root_path(like.idea)
+    redirect_to root_path(like.idea) ### not sure how to redirect properly when like is made from idea_path
   end
   def destroy
     like = current_user.likes.find params[:id] 
@@ -23,6 +23,6 @@ class LikesController < ApplicationController
     else
       flash[:warning] = "Could not Unlike Idea"
     end
-    redirect_to root_path(like.idea)
+    redirect_to root_path(like.idea) ### not sure how to redirect properly when like is made from idea_path
   end
 end
