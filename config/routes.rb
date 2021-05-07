@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :ideas do
     resources :reviews, only:[:create, :destroy]
+    resources :likes, shallow: true, only: [:create, :destroy]
+    get :liked, on: :collection
   end
 
   resource :session, only:[:new, :create, :destroy]

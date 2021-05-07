@@ -2,6 +2,9 @@ class Idea < ApplicationRecord
   has_many :reviews, dependent: :destroy
   belongs_to :user
 
+  has_many :likes
+  has_many :likers, through: :likes, source: :user
+
   before_save :capitalize_title
 
   validates :title, presence: {message: "Must be given"}, uniqueness: true
